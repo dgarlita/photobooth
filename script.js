@@ -2,7 +2,7 @@
 
 /* ====== KONFIGURASI ====== */
 const CONFIG = {
-  API_URL: 'https://script.google.com/macros/library/d/1aB4rdJ4HcxxXTry2-gnHuaCWfuSGcpR6UF9e9MRYSR2docxE64vPVSvb/1', // URL Web App Google Apps Script (berakhiran /exec)
+  API_URL: 'https://script.google.com/macros/s/AKfycbw43aLobkKRpXDsXfe2FOf2M7CVy-hqfqHX_oStgI-D26woFfvMT5zOgwumoFaUMAbh/exec', // URL Web App Google Apps Script (berakhiran /exec)
   MAX_WIDTH: 1280,                   // lebar maksimum foto sebelum diunggah
   QUALITY: 0.85,                     // kualitas JPEG
   PAGE_SIZE: 24                      // jumlah foto per muatan galeri
