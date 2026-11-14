@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wedding Photobooth — Dinda &amp; Wildan</title>
+<meta name="description" content="Abadikan momen pernikahan Dinda &amp; Wildan langsung dari kamera ponselmu.">
+<meta name="theme-color" content="#F4DDE3">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top">Dinda &amp; Wildan</a>
+  <nav aria-label="Navigasi utama">
+    <a href="#photobooth">Photobooth</a>
+    <a href="#gallery">Galeri</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="script">Dinda &amp; Wildan</p>
+      <h1>Wedding Photobooth</h1>
+      <p class="lead">Ambil fotomu di sini, lalu bagikan ke galeri pernikahan kami. Tidak perlu aplikasi, cukup kamera ponselmu.</p>
+      <a class="btn btn-primary" href="#photobooth">Mulai Photobooth</a>
+    </div>
+    <svg class="sprig sprig-l" viewBox="0 0 120 220" aria-hidden="true"><path d="M60 215C58 150 62 80 40 8" fill="none" stroke="#A8B5A0" stroke-width="2" stroke-linecap="round"/><g fill="#A8B5A0"><ellipse cx="46" cy="170" rx="9" ry="20" transform="rotate(-40 46 170)"/><ellipse cx="74" cy="140" rx="9" ry="20" transform="rotate(40 74 140)"/><ellipse cx="44" cy="105" rx="9" ry="19" transform="rotate(-40 44 105)"/><ellipse cx="70" cy="75" rx="8" ry="18" transform="rotate(40 70 75)"/><ellipse cx="42" cy="42" rx="7" ry="15" transform="rotate(-35 42 42)"/></g><circle cx="40" cy="8" r="6" fill="#C6A66B"/></svg>
+    <svg class="sprig sprig-r" viewBox="0 0 120 220" aria-hidden="true"><path d="M60 215C58 150 62 80 40 8" fill="none" stroke="#C98F9F" stroke-width="2" stroke-linecap="round"/><g fill="#C98F9F" opacity=".8"><ellipse cx="46" cy="170" rx="9" ry="20" transform="rotate(-40 46 170)"/><ellipse cx="74" cy="140" rx="9" ry="20" transform="rotate(40 74 140)"/><ellipse cx="44" cy="105" rx="9" ry="19" transform="rotate(-40 44 105)"/><ellipse cx="70" cy="75" rx="8" ry="18" transform="rotate(40 70 75)"/></g><circle cx="40" cy="8" r="6" fill="#C6A66B"/></svg>
+  </section>
+
+  <section class="section" id="photobooth" aria-labelledby="booth-title">
+    <div class="wrap narrow">
+      <h2 id="booth-title">Photobooth</h2>
+      <p class="section-sub">Izinkan akses kamera, ambil foto, periksa hasilnya, lalu unggah.</p>
+
+      <div class="booth" id="booth" data-state="idle">
+        <div class="stage">
+          <video id="video" playsinline muted autoplay></video>
+          <img id="preview" alt="Hasil foto sebelum diunggah" hidden>
+          <div class="idle-card" id="idleCard">
+            <p>Kamera belum aktif</p>
+          </div>
+          <div class="countdown" id="countdown" aria-live="assertive" hidden></div>
+          <div class="busy" id="busy" hidden><span class="spinner"></span><span id="busyText">Mengunggah…</span></div>
+        </div>
+
+        <p class="booth-msg" id="boothMsg" role="status" aria-live="polite" hidden></p>
+
+        <div class="controls controls-idle">
+          <button class="btn btn-primary" id="startBtn" type="button">Start Camera</button>
+        </div>
+        <div class="controls controls-live">
+          <button class="btn btn-ghost" id="switchBtn" type="button" hidden>Ganti Kamera</button>
+          <button class="btn btn-primary btn-shutter" id="shotBtn" type="button">Take Photo</button>
+          <label class="toggle"><input type="checkbox" id="timerChk"> Hitung mundur 3 detik</label>
+        </div>
+        <div class="controls controls-preview">
+          <button class="btn btn-ghost" id="retakeBtn" type="button">Retake Photo</button>
+          <button class="btn btn-primary" id="uploadBtn" type="button">Upload Photo</button>
+        </div>
+        <div class="controls controls-done">
+          <button class="btn btn-primary" id="againBtn" type="button">Ambil Foto Lagi</button>
+          <a class="btn btn-ghost" href="#gallery">Lihat Galeri</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <h2 id="gallery-title">Our Wedding Gallery</h2>
+      <p class="section-sub">Foto-foto dari para tamu yang hadir di hari bahagia kami.</p>
+      <div class="gallery-bar">
+        <button class="btn btn-ghost" id="refreshBtn" type="button">Refresh Gallery</button>
+      </div>
+      <div id="galleryState" class="gallery-state" role="status" aria-live="polite" hidden></div>
+      <ul class="grid" id="grid"></ul>
+      <div class="gallery-bar">
+        <button class="btn btn-ghost" id="moreBtn" type="button" hidden>Muat Lebih Banyak</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="script">Dinda &amp; Wildan</p>
+  <p>Terima kasih sudah hadir dan ikut merayakan hari bahagia kami.</p>
+  <p class="footer-note">Setiap foto yang kamu unggah menjadi bagian dari kenangan kami.</p>
+</footer>
+
+<dialog id="lightbox" aria-label="Foto diperbesar">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Tutup">×</button>
+  <img id="lbImg" alt="">
+  <div class="lb-actions">
+    <button class="btn btn-ghost" id="lbPrev" type="button">Sebelumnya</button>
+    <a class="btn btn-primary" id="lbDownload" href="#" target="_blank" rel="noopener">Download</a>
+    <button class="btn btn-ghost" id="lbNext" type="button">Berikutnya</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<canvas id="canvas" hidden></canvas>
+<script src="script.js"></script>
+</body>
+</html>
